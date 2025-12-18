@@ -1,0 +1,10 @@
+
+File analyzed: SUPPORT.md
+
+Release Strategy:
+- Prediction: Insufficient Information
+- Confidence: 0.48
+
+Workflow Model:
+- Prediction: GitHub Flow
+- Confidence: 0.35

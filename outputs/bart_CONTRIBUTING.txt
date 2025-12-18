@@ -1,0 +1,10 @@
+
+File analyzed: CONTRIBUTING.md
+
+Release Strategy:
+- Prediction: Long Term Support (LTS)
+- Confidence: 0.29
+
+Workflow Model:
+- Prediction: GitHub Flow
+- Confidence: 0.38

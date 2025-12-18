@@ -1,0 +1,10 @@
+
+File analyzed: SECURITY.md
+
+Release Strategy:
+- Prediction: Insufficient Information
+- Confidence: 0.35
+
+Workflow Model:
+- Prediction: Insufficient Information
+- Confidence: 0.36

@@ -1,0 +1,10 @@
+
+File analyzed: CODE_OF_CONDUCT.md
+
+Release Strategy:
+- Prediction: Insufficient Information
+- Confidence: 0.37
+
+Workflow Model:
+- Prediction: Insufficient Information
+- Confidence: 0.47
