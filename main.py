@@ -1,8 +1,8 @@
 import os
 import sys
 
-from facebook_bart_large_mnli import FacebookBartLargeMNLI
-from qwen_25_coder import Qwen25Coder
+from analysis_bart.facebook_bart_large_mnli import FacebookBartLargeMNLI
+from analysis_qwen.qwen_25_coder import Qwen25Coder
 
 
 def escolher_modelo():
