@@ -1,10 +1,13 @@
 import torch
+import json
+import os
+from datetime import datetime
 from transformers import pipeline, BitsAndBytesConfig
 
-
 class Qwen25Coder:
-    def __init__(self):
+    def __init__(self, output_file="analise_resultados.json"):
         self.model_id = "Qwen/Qwen2.5-Coder-7B-Instruct"
+        self.output_file = output_file  # Define o nome do arquivo de saída
 
         print("[INFO] Loading Qwen 2.5 Coder (4-bit)...")
 
@@ -22,7 +25,36 @@ class Qwen25Coder:
             device_map="auto",
         )
 
-    def analyze_document(self, document_text: str):
+    def _save_to_json(self, analysis_result, source_name):
+        """Salva o resultado da análise em um arquivo JSON de forma incremental."""
+        entry = {
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "source_document": source_name,
+            "analysis": analysis_result
+        }
+
+        # Verifica se o arquivo já existe e carrega o conteúdo
+        if os.path.exists(self.output_file):
+            try:
+                with open(self.output_file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if not isinstance(data, list):
+                        data = [] # Garante que seja uma lista
+            except (json.JSONDecodeError, ValueError):
+                data = []
+        else:
+            data = []
+
+        # Adiciona a nova entrada
+        data.append(entry)
+
+        # Salva de volta no arquivo
+        with open(self.output_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+        
+        print(f"[INFO] Resultado salvo em '{self.output_file}'")
+
+    def analyze_document(self, document_text: str, source_identifier: str = "documento_generico"):
         messages = [
             {
                 "role": "system",
@@ -53,4 +85,9 @@ DOCUMENTAÇÃO:
             do_sample=True,
         )
 
-        return outputs[0]["generated_text"][-1]["content"]
+        result_text = outputs[0]["generated_text"][-1]["content"]
+        
+        # Chama a função para salvar antes de retornar
+        self._save_to_json(result_text, source_identifier)
+
+        return result_text

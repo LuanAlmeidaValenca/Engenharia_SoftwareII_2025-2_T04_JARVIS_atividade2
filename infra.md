@@ -4,15 +4,15 @@ Abaixo está o modelo de formatação em **Markdown** para descrever as três m�
 
 ---
 
-## 🖥️ Máquina 1 — *[Modelo-1]*
+## 🖥️ Máquina 1 — *[Facebook/bart-large-mnli]*
 
 ### Tipo de Ambiente
 **Local**
 
 ### Especificações
-- **GPU:*NVidia GTX 1050 4GB VRAM*
-- **CPU:*Intel core I5-7300HQ 2.50GHZ*
-- **Memória RAM:*20GB DDR4*
+- **GPU:*Apple GPU integrada (10-core, arquitetura Apple Silicon – M4)*
+- **CPU:*Apple M4 (10-core, ~4.4 GHz)*
+- **Memória RAM:*16 GB de memória unificada LPDDR5X*
 
 ---
 
